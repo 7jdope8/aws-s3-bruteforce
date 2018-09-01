@@ -86,6 +86,6 @@ With the -p modifier, you will see the same progress bar printed (with updated) 
 # Notes
 - On lists, I would recommend running this inside of tmux or screen with the -p option so that you can see the current comapny being scanned in case an error is thrown and it stops or you want to manually stop it.
 - Buckets that exist will be written to found/buckets_found.txt in the root folder
-- The "scanned" folder contains prior lists that you have scanned.  All names (by line) in these files will be skipped during the scan, to prevent re-running names on random lists you try.
+- The "list/buckets_found.txt" will contain all buckets found and will be pulled into the search object so they're not scanned again to save some little bits of time
 - On an AWS EC2 t2.micro instance, I was able to search 30 names/sec per thread on a list of names.
 - Domain names can be added via the constants file but I commented it out beacuse it wasn't adding any value and increasing the search space dramatically
