@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+import os
+
+lib_dir = os.path.dirname(os.path.realpath(__file__))
+main_dir = os.path.dirname(os.path.dirname(__file__))
+list_dir = "%s/list" % (main_dir)
+
 base_url = "https://s3.amazonaws.com/"
 
 #Seconds to sleep between attempts
@@ -20,7 +26,7 @@ space_replacements = ["", "-", "_"]
 prefix_postfix_separators = ["", ".", "-", "_"]
 
 # Loaded from the file specified in prefixes_postfixes_file
-prefixes_postfixes_file = "./prefixes_postfixes.txt"
+prefixes_postfixes_file = "%s/prefixes_postfixes.txt" % (list_dir)
 prefixes_postfixes = []
 with open(prefixes_postfixes_file) as f:
     prefixes_postfixes = [line.rstrip('\n') for line in f]

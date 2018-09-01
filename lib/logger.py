@@ -1,14 +1,13 @@
 #!/usr/bin/env python
 import os, ast
-cur_dir = os.path.dirname(os.path.realpath(__file__))
+from lib.constants import *
 
-
-def get_buckets_found(output_file):
+def get_buckets_found(output_file=None):
     """Return a list of comb/perm public buckets that have been found"""
     bucket_names = []
     try:
         if not output_file:
-            output_file = "buckets_found.txt"
+            output_file = "%s/buckets_found.txt" % (list_dir)
         with open(output_file, 'r') as f:
             for line in f:
                 if line.strip():
@@ -21,9 +20,9 @@ def get_buckets_found(output_file):
         return bucket_names
 
 
-def log_bucket_found(bucket_result, output_file):
+def log_bucket_found(bucket_result, output_file=None):
     if not output_file:
-        output_file = "buckets_found.txt"
+        output_file = "%s/buckets_found.txt" % (list_dir)
 
     """Writes potentially open buckets to a file"""
     f = open(output_file, "a")

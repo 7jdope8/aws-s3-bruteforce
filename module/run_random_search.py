@@ -2,11 +2,11 @@
 import threading
 import Queue
 import random, time
-from progressbar import ProgressBar
-from constants import *
-from check_bucket import *
-from logger import *
-from generate_strings import *
+from lib.progressbar import ProgressBar
+from lib.constants import *
+from lib.logger import *
+from module.check_bucket import *
+from module.generate_strings import *
 
 def createStringGenerator(search):
     while True:

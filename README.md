@@ -30,11 +30,11 @@ AWS Authentication can be used via access and secret keys, as shown below.  This
 #Single threaded scan of a given company name, changing the output file<br>
 ./find_public_buckets.py -t 1 -s "This Company Name" -o thiscompanyname.log
 
-#Acronym only search of a given string 
+#Acronym only search of a given string<br>
 ./find_public_buckets.py -t 1 -s "This Company Name" -ao
 
 #Dual threaded scan of the example file (company_names.txt)<br>
-./find_public_buckets.py -t 2 -l comapny_names.txt
+./find_public_buckets.py -t 2 -l list/companies.txt
 
 #Dual threaded scan of the example file (company_names.txt), starting after "Harris Corporation"<br>
 ./find_public_buckets.py -t 2 -l comapny_names.txt -a "Harris Corporation"

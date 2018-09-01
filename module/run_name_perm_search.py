@@ -3,13 +3,13 @@
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-from progressbar import ProgressBar
 import threading
 import Queue
-from check_bucket import *
-from constants import *
-from generate_strings import *
-from logger import *
+from lib.constants import *
+from lib.logger import *
+from lib.progressbar import ProgressBar
+from module.check_bucket import *
+from module.generate_strings import *
 from search_obj import *
 
 

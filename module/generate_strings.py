@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from constants import *
+from lib.constants import *
 
 def get_string_variations(string, prefix_postfix_option, acronyms_only_option):
     #Names are not case sensitive

@@ -3,11 +3,11 @@ import threading
 import Queue
 import itertools
 import random, time
-from progressbar import ProgressBar
-from constants import *
-from check_bucket import *
-from logger import *
-from generate_strings import *
+from lib.progressbar import ProgressBar
+from lib.constants import *
+from lib.logger import *
+from module.check_bucket import *
+from module.generate_strings import *
 
 
 def createStringGenerator(string_options, num_chars):
@@ -18,7 +18,7 @@ def createStringGenerator(string_options, num_chars):
 def run_comb_perm_search(search):
     #Create progressbar to show how many searches have been done, removing eta
     search.progressbar = ProgressBar(total_items=get_num_comb_perm(string_options=search.string_options, num_chars=search.num_chars))
-    search.progressbar.fmt = '''%(percent)3d%% %(bar)s %(current)s/%(total_items)s   %(items_per_sec)s   ETA: %(eta)s   Bucket: %(bucket_name)s'''
+    search.progressbar(num_compelted=0)
 
     #Get all public butets that have been found so far
     search.buckets_found = get_buckets_found(search.output_file)
@@ -66,9 +66,13 @@ def search_instance(search):
                 search.progressbar.total_items -= 1
                 continue
             
-            #Check the bucket
-            check_s3_bucket(bucket_name=bucket_name, access_key=search.access_key, secret_key=search.secret_key, output_file=search.output_file)
-            #Increment progress and sleep                
+            bucket_names = get_string_variations(bucket_name, search.prefix_postfix_option, acronyms_only_option=search.acronyms_only)
+            for bn in bucket_names:
+                check_s3_bucket(bucket_name=bn, access_key=search.access_key, secret_key=search.secret_key, output_file=search.output_file)
+
+                #Just print the searched bucket variation, don't increment till done
+                if search.print_bucket_names:
+                    search.progressbar(print_bucket_names=search.print_bucket_names, bucket_name=bn, num_compelted=0)
 
             if search.print_bucket_names:
                 search.progressbar(print_bucket_names=search.print_bucket_names, bucket_name=bucket_name)
@@ -79,13 +83,15 @@ def search_instance(search):
 
         #Generator is empty...done
         except StopIteration:
+            print "stop"
             break
         #Generator is already running for another thread
         except ValueError:
+            print "value error"
             pass
         #Catchall for other issues
-        except:
-            pass
+        except Exception as e:
+            print e
 
 def get_num_comb_perm(string_options, num_chars):
     """Gets the number of combintions/permutations for the given string and number of chars"""

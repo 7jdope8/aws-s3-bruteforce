@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-from progressbar import *
+from lib.progressbar import *
 
 
 class SearchNames():
@@ -16,10 +16,11 @@ class SearchNames():
 
 
 class SearchStrings():
-    def __init__(self, num_chars, num_chars_range, string_options, threads, print_bucket_names, output_file, start_after_value, stop_at_value, prefix_postfix_option, access_key, secret_key):
+    def __init__(self, num_chars, num_chars_range, string_options, acronyms_only, threads, print_bucket_names, output_file, start_after_value, stop_at_value, prefix_postfix_option, access_key, secret_key):
         self.num_chars = num_chars
         self.num_chars_range = num_chars_range
         self.string_options = string_options
+        self.acronyms_only = acronyms_only
         self.threads = threads
         self.print_bucket_names = print_bucket_names
         self.output_file = output_file

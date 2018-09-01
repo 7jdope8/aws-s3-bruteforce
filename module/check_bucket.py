@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import random, requests, time, re
-from constants import base_url
-from logger import *
+from lib.constants import base_url
+from lib.logger import *
 
 no_bucket_responses = [
                         "NoSuchBucket",

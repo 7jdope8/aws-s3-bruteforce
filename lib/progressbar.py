@@ -20,7 +20,7 @@ class ProgressBar(object):
         self.width = 40                 #Length of progress bar
         self.symbol = "#"               #Needs to be 1 char
         self.output = sys.stderr
-        self.fmt = '''%(percent)3d%% %(bar)s %(current)s/%(total_items)s   %(items_per_sec)s   ETA: %(eta)s    Bucket: %(bucket_name)s'''
+        self.fmt = '''%(percent)3d%% %(bar)s %(current)s/%(total_items)s   %(items_per_sec)s   ETA: %(eta)s  %(bucket_name)s'''
         assert len(self.symbol) == 1    #If higher, progress bar won't populate properly
         assert self.width <= 150        #If higher, it'll takeup more than one line of text
 
@@ -51,7 +51,7 @@ class ProgressBar(object):
 
         #Args to populate into fmt
         if print_bucket_names:
-            bn = bucket_name+"\n"
+            bn = "Bucket: %s\n" % (bucket_name)
         else:
             bn = ""
         args = {

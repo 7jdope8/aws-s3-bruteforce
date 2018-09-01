@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-from arg_parser import args
-from get_previous_scans import *
-from generate_strings import *
 from search_obj import *
-from run_comb_perm_search import *
-from run_name_perm_search import *
-from run_random_search import *
+from lib.arg_parser import args
+from module.generate_strings import *
+from module.run_comb_perm_search import *
+from module.run_name_perm_search import *
+from module.run_random_search import *
 
 if __name__ == "__main__": 
     #Search a given list of company names, permuting them
@@ -16,7 +15,7 @@ if __name__ == "__main__":
                                     file_name = args.list,
                                     prefix_postfix_option = args.prefix_or_postfix,
                                     acronyms_only_option = args.acronyms_only,
-                                    scanned_buckets = get_previous_scans(),
+                                    scanned_buckets = get_buckets_found(output_file=args.output_file),
                                     start_after_value = args.start_after_value,
                                     start_after_line_num = args.start_after_line_num,
                                     threads = args.threads,
@@ -65,6 +64,7 @@ if __name__ == "__main__":
                                         num_chars=args.num_chars,
                                         num_chars_range=args.num_chars_range,
                                         string_options = args.random_string_options,
+                                        acronyms_only = args.acronyms_only,
                                         threads = args.threads,
                                         print_bucket_names = args.print_bucket_names,
                                         output_file = args.output_file,
@@ -85,6 +85,7 @@ if __name__ == "__main__":
                                         num_chars=args.num_chars,
                                         num_chars_range=args.num_chars_range,
                                         string_options = args.all_comb_perm,
+                                        acronyms_only = args.acronyms_only,
                                         threads = args.threads,
                                         print_bucket_names = args.print_bucket_names,
                                         output_file = args.output_file,
