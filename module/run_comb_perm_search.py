@@ -73,6 +73,8 @@ def search_instance(search):
                 #Just print the searched bucket variation, don't increment till done
                 if search.print_bucket_names:
                     search.progressbar(print_bucket_names=search.print_bucket_names, bucket_name=bn, num_compelted=0)
+                else:
+                    search.progressbar()
 
             if search.print_bucket_names:
                 search.progressbar(print_bucket_names=search.print_bucket_names, bucket_name=bucket_name)
