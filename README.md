@@ -1,5 +1,5 @@
 # Purpose
-For a given comapny name, try a large variety of permutations in order to scan and guess AWS S3 bucket names, identifying those that are public, printing them to the screen and open_buckets.txt.
+For a given comapny name, try a large variety of permutations in order to scan and guess AWS S3 bucket names, identifying those that are public, printing them to the screen and buckets_found.txt.
 
 For a given set of chars (e.g. -r abc123) and a number range (e.g. 3-5), generate random strings within the length range, using the given set of chars, to find public buckets, printing them to the screen and open_buckets.txt.
 
