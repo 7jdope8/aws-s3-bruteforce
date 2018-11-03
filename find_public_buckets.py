@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
+import sys
 from search_obj import *
 from lib.arg_parser import args
 from module.generate_strings import *
@@ -8,6 +9,12 @@ from module.run_name_perm_search import *
 from module.run_random_search import *
 
 if __name__ == "__main__": 
+    
+    print '''
+THIS REPO IS DEPRECATED.  Please see https://github.com/Ucnt/aws-s3-data-finder/
+    '''
+    sys.exit()
+    
     #Search a given list of company names, permuting them
 
     if args.list:
